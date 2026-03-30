@@ -1,0 +1,498 @@
+/* ============================================================
+   FSUU Library Booking System — Main Stylesheet
+   ============================================================ */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+    --color-maroon:        #03045E;
+    --color-maroon-dark:   #0077B6;
+    --color-maroon-light:  #00B4D8;
+    --color-gold:          #90E0EF;
+    --color-white:         #FFFFFF;
+    --color-light-bg:      #CAF0F8;
+    --color-text:          #03045E;
+    --border-radius:       0.5rem;
+    --transition:          0.25s ease;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-light-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { flex: 1; }
+
+/* ---------- Navbar ---------- */
+.bg-maroon { background-color: var(--color-maroon) !important; }
+
+.navbar-brand { letter-spacing: 0.5px; }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.85);
+    transition: color var(--transition);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover { color: var(--color-gold); }
+
+/* ---------- Cards ---------- */
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    transition: box-shadow var(--transition);
+}
+
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+
+.card-header {
+    background-color: var(--color-maroon);
+    color: var(--color-white);
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+    font-weight: 600;
+}
+
+/* ---------- Stat cards (dashboard) ---------- */
+.stat-card {
+    border-left: 4px solid var(--color-gold);
+    padding: 1.25rem;
+}
+
+.stat-card .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-maroon);
+}
+
+/* ---------- Buttons ---------- */
+.btn-maroon {
+    background-color: var(--color-maroon);
+    color: var(--color-white);
+    border: none;
+}
+
+.btn-maroon:hover {
+    background-color: var(--color-maroon-dark);
+    color: var(--color-white);
+}
+
+/* ---------- Tables ---------- */
+.table thead th {
+    background-color: var(--color-maroon);
+    color: var(--color-white);
+    vertical-align: middle;
+}
+
+/* ---------- Forms ---------- */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-maroon-light);
+    box-shadow: 0 0 0 0.2rem rgba(0,119,182,.25);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: var(--color-maroon-dark);
+    color: rgba(255,255,255,.75);
+    padding: 1rem 0;
+    font-size: .875rem;
+    text-align: center;
+}
+
+/* ---------- Auth pages ---------- */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-maroon) 0%, var(--color-maroon-light) 100%);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px rgba(0,0,0,.2);
+}
+
+.auth-card .auth-logo {
+    display: block;
+    max-height: 80px;
+    margin: 0 auto 1rem;
+}
+
+/* ---------- Student dashboard ---------- */
+.student-shell {
+    padding: 1.5rem;
+}
+
+.student-dashboard {
+    display: grid;
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.student-sidebar {
+    position: sticky;
+    top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(180deg, #03045E 0%, #0077B6 100%);
+    color: var(--color-white);
+    box-shadow: 0 18px 45px rgba(3, 4, 94, 0.18);
+}
+
+.student-sidebar__brand h1 {
+    margin: 0.35rem 0 0.75rem;
+    font-size: 1.85rem;
+    font-weight: 700;
+}
+
+.student-sidebar__brand p,
+.student-panel__header p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.student-sidebar__eyebrow,
+.student-panel__eyebrow,
+.student-hero__label {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.student-sidebar__nav {
+    display: grid;
+    gap: 0.65rem;
+    margin: 1.75rem 0;
+}
+
+.student-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 1rem;
+    color: rgba(255, 255, 255, 0.86);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.95rem;
+    background: rgba(255, 255, 255, 0.06);
+    transition: transform var(--transition), background var(--transition), color var(--transition);
+}
+
+.student-nav-link:hover,
+.student-nav-link.is-active {
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateX(4px);
+}
+
+.student-content {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.student-hero,
+.student-panel {
+    overflow: hidden;
+    border-radius: 1.25rem;
+}
+
+.student-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.9fr);
+    gap: 1.25rem;
+    padding: 1.6rem;
+    background:
+        radial-gradient(circle at top right, rgba(0, 180, 216, 0.24), transparent 28%),
+        linear-gradient(135deg, #caf0f8 0%, #90e0ef 100%);
+}
+
+.student-hero__copy h2 {
+    margin: 0.4rem 0 0.85rem;
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    color: var(--color-maroon);
+}
+
+.student-hero__copy p {
+    max-width: 52ch;
+    margin: 0;
+    color: #0077b6;
+    line-height: 1.7;
+}
+
+.student-hero__stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.student-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.05rem;
+    border-radius: 1rem;
+    background: rgba(0, 180, 216, 0.12);
+    border: 1px solid rgba(0, 119, 182, 0.2);
+}
+
+.student-metric span {
+    display: block;
+    font-size: 0.82rem;
+    color: #0077b6;
+    margin-bottom: 0.25rem;
+}
+
+.student-metric strong {
+    font-size: 1.7rem;
+    line-height: 1;
+    color: var(--color-maroon);
+}
+
+.student-metric i {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+}
+
+.student-panel {
+    padding: 1.35rem;
+}
+
+.student-panel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.15rem;
+}
+
+.student-panel__header h3 {
+    margin: 0.35rem 0 0;
+    font-size: 1.35rem;
+    color: var(--color-maroon);
+}
+
+.student-facility-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.student-facility-card {
+    padding: 1.15rem;
+    border-radius: 1rem;
+    background: linear-gradient(180deg, #ffffff 0%, #caf0f8 100%);
+    border: 1px solid rgba(0, 119, 182, 0.15);
+}
+
+.student-facility-card h4,
+.student-request-item h4 {
+    margin: 0.8rem 0 0.35rem;
+    font-size: 1.05rem;
+    color: var(--color-maroon);
+}
+
+.student-facility-card p,
+.student-request-item p {
+    margin: 0;
+    color: #0077b6;
+}
+
+.student-facility-card dl {
+    margin: 1rem 0 0;
+    display: grid;
+    gap: 0.7rem;
+}
+
+.student-facility-card dt {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #0077b6;
+}
+
+.student-facility-card dd {
+    margin: 0.15rem 0 0;
+    color: #03045e;
+    font-weight: 600;
+}
+
+.student-request-list {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.student-request-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 119, 182, 0.15);
+    background: #caf0f8;
+}
+
+.student-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.student-chip.is-open,
+.student-chip.status-approved {
+    background: rgba(0, 180, 216, 0.2);
+    color: #03045e;
+}
+
+.student-chip.is-closed,
+.student-chip.status-rejected {
+    background: rgba(0, 119, 182, 0.2);
+    color: #03045e;
+}
+
+.student-chip.status-pending {
+    background: rgba(144, 224, 239, 0.45);
+    color: #03045e;
+}
+
+.student-history-table table {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.student-empty-state {
+    display: grid;
+    place-items: center;
+    gap: 0.55rem;
+    min-height: 180px;
+    border: 1px dashed rgba(0, 119, 182, 0.32);
+    border-radius: 1rem;
+    color: #0077b6;
+    text-align: center;
+    padding: 1.25rem;
+}
+
+.student-empty-state i {
+    font-size: 1.8rem;
+    color: var(--color-maroon-light);
+}
+
+@media (max-width: 1199.98px) {
+    .student-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .student-sidebar {
+        position: static;
+    }
+
+    .student-facility-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 991.98px) {
+    .student-hero {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .student-shell {
+        padding: 1rem;
+    }
+
+    .student-sidebar,
+    .student-panel,
+    .student-hero {
+        padding: 1.1rem;
+    }
+
+    .student-sidebar__nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .student-nav-link {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        gap: 0.45rem;
+    }
+
+    .student-hero__stats,
+    .student-facility-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .student-panel__header,
+    .student-request-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .student-sidebar__nav {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Admin dashboard ---------- */
+.admin-dashboard-shell .admin-section .card-header {
+    font-size: 0.98rem;
+}
+
+.admin-dashboard-shell .admin-section .table td,
+.admin-dashboard-shell .admin-section .table th {
+    vertical-align: middle;
+}
+
+.btn-gold {
+    background-color: var(--color-gold);
+    color: #03045e;
+    border: none;
+}
+
+.btn-gold:hover {
+    background-color: #00b4d8;
+    color: #03045e;
+}
+
+@media (max-width: 767.98px) {
+    .admin-dashboard-shell .card-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.5rem;
+    }
+
+    .admin-dashboard-shell .table .btn {
+        margin-top: 0.25rem;
+    }
+}
+
+/* ---------- Utilities ---------- */
+.text-maroon  { color: var(--color-maroon) !important; }
+.bg-maroon-lt { background-color: #caf0f8 !important; }
